@@ -11,8 +11,11 @@ public class NetworkableDefaultClient: NetworkableClient {
     private let session: URLSession
     private let decoder: JSONDecoder
 
-    public init(session: URLSession = .shared, decoder: JSONDecoder = .init()) {
+    public init(session: URLSession = .shared) {
         self.session = session
+
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         self.decoder = decoder
     }
 
